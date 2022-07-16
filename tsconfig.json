@@ -1,0 +1,14 @@
+{
+  "extends": "@tsconfig/node16/tsconfig.json",
+  "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "module": "es2022",
+    "moduleResolution": "node",
+    "noEmitOnError": true,
+    "outDir": "./dist",
+    "skipLibCheck": false,
+    "strict": true,
+    "target": "ES2022",
+    "noUncheckedIndexedAccess": true
+  }
+}

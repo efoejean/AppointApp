@@ -13,6 +13,13 @@ export interface Appointment {
 
 export type newAppointment = Omit<Appointment, 'id' | 'whenCreated'>;
 
+export type AppointmentFilter =
+  | Partial<Appointment>
+  | {
+      id: number;
+    };
+
+// - want to have a default value for whenCreated and status and role
 // export type createAppointment = Omit<Appointment, 'id'>;
 
 // export type defaultAppointment = Pick<Appointment, 'deposit' | 'whenCreated'>;

@@ -1,8 +1,12 @@
 export interface Config {
-  baseUrl: string;
+  api: {
+    apiEndpoint: string;
+    apiKey: string;
+  };
   db: {
-    name: string;
-    url: string | undefined;
+    dataSource: string;
+    database: string;
+    collection: string;
   };
   port: number;
 }

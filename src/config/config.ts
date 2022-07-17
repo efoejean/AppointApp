@@ -3,10 +3,14 @@ import { Config } from './config.d';
 dotenv.config();
 
 const config: Config = {
-  baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+  api: {
+    apiEndpoint: process.env.API_ENDPOINT,
+    apiKey: process.env.API_KEY,
+  },
   db: {
-    name: process.env.DB_NAME,
-    url: process.env.MONGO_DB_URL,
+    dataSource: process.env.dataSource,
+    database: process.env.database,
+    collection: process.env.collection,
   },
   port: parseInt(process.env.PORT || '3000', 10),
 };

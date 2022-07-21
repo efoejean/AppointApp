@@ -1,5 +1,5 @@
 export interface Appointment {
-  id: number;
+  id: string;
   name: string;
   dateAndTime: Date;
   phoneNumber: string;
@@ -11,13 +11,17 @@ export interface Appointment {
   whenCreated: Date;
 }
 
-export type newAppointment = Omit<Appointment, 'id' | 'whenCreated'>;
+export type NewAppointment = Omit<Appointment, 'id'>;
 
 export type AppointmentFilter =
   | Partial<Appointment>
   | {
-      id: number;
+      id: string;
     };
+
+export interface deleteAppointment {
+  deleteCount: number;
+}
 
 // - want to have a default value for whenCreated and status and role
 // export type createAppointment = Omit<Appointment, 'id'>;

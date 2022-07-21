@@ -1,5 +1,5 @@
 import express from 'express';
-import config from './config';
+import config from './config/config';
 import helmet from 'helmet';
 import cors from 'cors';
 

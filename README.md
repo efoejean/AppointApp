@@ -6,18 +6,44 @@ The client management system will use a client phone number to keep track of app
 
 ## Primary Objectives
 
-- When I login, then I should see a list of all upcoming appointments.
-- when I click an appointment, then I should see the appointment details.
-- When I click on a client, then I should see a history of their previous services.
-- when i click on create appointment, then I should be able to create an appointment.
-- when i click on cancel button, then I should be able to cancel an appointment and change the appointment status to canceled.
-- when i click on edit button, then I should be able to edit an appointment.
-- when i click on appointments then i should be able to see all the appointments.
-- when i click on canceled appointments then i should be able to see all the canceled appointments.
-- when i click on clients then i should be able to see all the clients.
-- when i click on edit client then i should be able to edit a client information.
-- when i do a search, then i should be able to search for a client by phone number.
-- when i do a search, then i should be able to search for appointment by date or by phone number.
+As an administrator of the app:
+
+- Whenever I login, I should see a list of all upcoming appointments that shows the time, client name, phone number and stylist.
+- Whenever i click on cancel button, I should be able to cancel an appointment.
+
+- Whenever I click an appointment, I should see the appointment service details.
+- Whenever I click on a client, I should see a history of their previous services.
+
+- Whenever I enter a phone number that doesn't exist, I should be prompted to create a new client or enter a different number.
+- Whenever I choose to create a new client, I should see a form prompting for a mandatory name and an optional email.
+- Whenever I enter a phone number for an existing client, I should have the options to create an appointment or view their history/details.
+
+- Whenever I create an appointment, I should be able to enter the type of service and the necessary number of hours.
+
+  - Then, I should see a list of qualified stylists available for this time period.
+  - Then, I select a stylist to confirm the appointment.
+
+- Whenever I create a new stylist, I should see a form to enter the stylist's name and some checkboxes/dropdown for their specialties.
+
+- Whenever I click on "Stylists", I see a list of all of my stylists.
+- Whenever I click on a stylist, I can edit their details, including specialties.
+- Whenever I click on a stylist, I can set their schedule for the week.
+
+- Whenever I click on clients then i should be able to see all the clients.
+
+## Secondary Objectives
+
+- Whenever I attempt to create an appointment outside of business hours, I am informed or blocked from making this appointment.
+
+- Whenever I click on edit button, then I should be able to edit an appointment.
+- Whenever I click on edit client then I should be able to edit a client information.
+
+- Whenever I do a search, then I should be able to search for appointment by date or by phone number.
+
+## Bonus Objective
+
+- Whenever I enter a phone number for a client that has excessive cancellations, I will be alerted to collect a deposit.
+- Whenever I click on cancellations, I should see a report of
 
 ## Some of What's Included
 
@@ -75,7 +101,7 @@ The client management system will use a client phone number to keep track of app
 
 ## Routes
 
-All routes will be prefaced with `/api`.
+All routes will be prefaced with `/`.
 
 All routes will be protected via JWT after authenticating a user.
 

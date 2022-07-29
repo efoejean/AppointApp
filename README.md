@@ -43,13 +43,14 @@ As an administrator of the app:
 ## Bonus Objective
 
 - Whenever I enter a phone number for a client that has excessive cancellations, I will be alerted to collect a deposit.
-- Whenever I click on cancellations, I should see a report of
+- Whenever I click on cancellations, I should see a report of cancellations for the past month.
 
 ## Some of What's Included
 
 - Keep track of clients and appointments
 - manage clients.
 - manage appointments.
+- manage stylists.
 
 ### Client
 
@@ -99,6 +100,21 @@ As an administrator of the app:
 	},
 ```
 
+### Stylist
+
+```json
+{
+		"_id": "61b669edfee03a75e9d015d0",
+		"name": "Elizabeth",
+		"phone": "816-907-9526",
+		"createdAt": "2017-01-01T00:00:00.000Z",
+		"specialties": [
+			"Senegalese",
+			"Haircut"
+		]
+	},
+```
+
 ## Routes
 
 All routes will be prefaced with `/`.
@@ -121,12 +137,22 @@ All routes will be protected via JWT after authenticating a user.
 `POST` - `/find`
 `POST` - `/findOne`
 `POST` - `/cancel`
-`POST` - `/complete`
 
 ### Client Routes
 
 `/client`
 
+`POST` - `/create`
+`POST` - `/find`
+`POST` - `/findOne`
+`PUT` - `/edit`
+`POST` - `/details`
+
+### Stylist
+
+`/stylist`
+
+`POST` - `/create`
 `POST` - `/find`
 `POST` - `/findOne`
 `PUT` - `/edit`

@@ -6,22 +6,25 @@ The client management system will use a client phone number to keep track of app
 
 ## Primary Objectives
 
+<!-- TODO{efoe}: Where are deposits reflected? Is it just a checkbox? -->
+
 As an administrator of the app:
 
 - Whenever I login, I should see a list of all upcoming appointments that shows the time, client name, phone number and stylist.
-- Whenever i click on cancel button, I should be able to cancel an appointment.
+- Whenever I click on cancel button, I should be able to cancel an appointment.
 
 - Whenever I click an appointment, I should see the appointment service details.
 - Whenever I click on a client, I should see a history of their previous services.
 
 - Whenever I enter a phone number that doesn't exist, I should be prompted to create a new client or enter a different number.
 - Whenever I choose to create a new client, I should see a form prompting for a mandatory name and an optional email.
+- and then i should continue to the appointment form.
 - Whenever I enter a phone number for an existing client, I should have the options to create an appointment or view their history/details.
 
-- Whenever I create an appointment, I should be able to enter the type of service and the necessary number of hours.
-
-  - Then, I should see a list of qualified stylists available for this time period.
-  - Then, I select a stylist to confirm the appointment.
+- Whenever I start to create an appointment, I should be able to enter the type of service and the necessary number of hours.
+  - then, i should be able to check a checkbox to indicate that the client has a deposit or not.
+- Then, I should see a list of qualified stylists available for this time period.
+- Then, I select a stylist to confirm the appointment.
 
 - Whenever I create a new stylist, I should see a form to enter the stylist's name and some checkboxes/dropdown for their specialties.
 
@@ -40,77 +43,87 @@ As an administrator of the app:
 
 - Whenever I do a search, then I should be able to search for appointment by date or by phone number.
 
+- Whenever I get a client inquiry for services, I can book an appointment based on the stylist's availability.
+
 ## Bonus Objective
+
+<!-- TODO{efoe}: User story for keeping track of revenue. -->
 
 - Whenever I enter a phone number for a client that has excessive cancellations, I will be alerted to collect a deposit.
 - Whenever I click on cancellations, I should see a report of cancellations for the past month.
+- whenever i want to calculate the total revenue of certain period of time.
+- then i should click on get a report.
+- then i should be prompted to enter a start and end date.
+- then i should be able to see a report of the total revenue of certain period of time.
 
-## Some of What's Included
-
-- Keep track of clients and appointments
-- manage clients.
-- manage appointments.
-- manage stylists.
-
-### Client
+### Clients
 
 ```json
 {
-		"_id": "61b669edfee03a75e9d015d0",
-		"name": "Elizabeth",
-		"phone": "816-907-9526",
-		"createdAt": "2017-01-01T00:00:00.000Z",
-		"serviceHistory":[
-			{
-				"_id": "61b669edfee03a75e9d015d1",
-				"appointmentDate": "2017-01-01T00:00:00.000Z",
-				"Style": "Senegalese",
-				"price": "100",
-				"Stylist": "marina",
-				"status" : "Completed	",
-				"dateCreated": "2017-03-01T00:00:00.000Z"
-			},
-			{
-				"_id": "61b669edfee03a75e9d015d2",
-				"appointmentDate": "2017-01-01T00:00:00.000Z",
-				"Style": "Senegalese",
-				"price": "100",
-				"Stylist": "marina",
-				"status": "canceled",
-				"dateCreated": "2017-01-01T00:00:00.000Z"
-			}
-		]
-	},
+  "_id": "61b669edfee03a75e9d015d0",
+  "client_name": "John Doe",
+  "phone_number": "1234567890",
+  "email": "john@mail.com",
+  "appointments": [
+    {
+      "stylist_name": "Melanie",
+      "appointment_date": "2018-01-01T00:00:00.000Z",
+      "hours": 2,
+      "price": "100",
+      "service": "Senegalese",
+      "deposit": "N",
+      "created_date": "2018-01-01T00:00:00.000Z"
+    }
+  ]
+}
 ```
 
-### Appointment
+### Stylists
 
 ```json
 {
 		"_id": "61b669edfee03a75e9d015d0",
-		"name": "Elizabeth",
+		"name": "Melanie",
 		"phone": "816-907-9526",
-		"appointmentDate": "2017-01-01T00:00:00.000Z",
-		"Style": "Senegalese",
-		"price": "100",
-		"deposit": "yes",
-		"Stylist": "marina",
-		"status" : "Completed	",
-		"dateCreated": "2017-03-01T00:00:00.000Z"
-	},
-```
-
-### Stylist
-
-```json
-{
-		"_id": "61b669edfee03a75e9d015d0",
-		"name": "Elizabeth",
-		"phone": "816-907-9526",
-		"createdAt": "2017-01-01T00:00:00.000Z",
-		"specialties": [
+		"services": [
 			"Senegalese",
 			"Haircut"
+		],
+		"email": "melanie@email.com",
+		"weekly_schedule": [
+			{
+				"day": "Monday",
+				"start": "09:00",
+				"end": "17:00"
+			},
+			{
+				"day": "Tuesday",
+				"start": "09:00",
+				"end": "17:00"
+			},
+			{
+				"day": "Wednesday",
+				"start": "09:00",
+				"end": "17:00"
+			},
+			{
+				"day": "Thursday",
+				"start": "09:00",
+				"end": "17:00"
+			},
+			{
+				"day": "Friday",
+				"start": "09:00",
+				"end": "17:00"
+			}
+		],
+		"appointments": [
+			{
+				"client_name": "John Doe",
+				"appointment_date": "2018-01-01T00:00:00.000Z",
+				"hours": 2,
+				"service": "Senegalese"
+			}
 		]
 	},
 ```
@@ -122,8 +135,6 @@ All routes will be prefaced with `/`.
 All routes will be protected via JWT after authenticating a user.
 
 ### Master Routes
-
-`POST` - `/register`
 
 `POST` - `/login`
 
@@ -154,9 +165,8 @@ All routes will be protected via JWT after authenticating a user.
 
 `POST` - `/create`
 `POST` - `/find`
-`POST` - `/findOne`
 `PUT` - `/edit`
 
 ## External APIs
 
-None ATM.
+TBD.

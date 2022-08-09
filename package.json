@@ -1,7 +1,7 @@
 {
-  "main": "src/index.ts",
+  "main": "src/server.ts",
   "scripts": {
-    "start": "nodemon --experimental-modules --es-module-specifier-resolution=node ./dist/index.js",
+    "start": "nodemon --es-module-specifier-resolution=node ./dist/server.js",
     "test": "jest --watch",
     "tsc": "tsc -w"
   },
